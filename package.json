@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Avishkar1234/ODIN-BASIC-INFORMATIONAL-SITE#readme",
   "description": "",
   "dependencies": {
+    "ejs": "^4.0.1",
     "express": "^5.2.1"
   }
 }

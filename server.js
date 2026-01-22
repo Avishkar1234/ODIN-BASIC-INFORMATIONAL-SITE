@@ -4,30 +4,29 @@ const path = require('path')
 const app = express();
 const PORT = 3000;
 
+app.set("view engine", "ejs")
+app.set("views", path.join(__dirname, "views"))
+
 //middleware for static files (css, images)
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, "public")));
 
-//routes
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"))
-})
+app.get("/", (req, res) => {
+  res.render("index");
+});
 
-app.get('/about', (req, res) => {
-  res.sendFile(path.join(__dirname, "about.html"))
-})
+app.get("/about", (req, res) => {
+  res.render("about");
+});
 
-app.get('/contact', (req, res) => {
-  res.sendFile(path.join(__dirname, "contact.html"))
-})
-
-//404 handler
+app.get("/contact", (req, res) => {
+  res.render("contact");
+});
 
 app.use((req, res) => {
-  res.status(404).sendFile(path.join(__dirname, "404.html"))
-})
+  res.status(404).render("404");
+});
 
-// server listen
 
-app.listen(PORT, (
+app.listen(PORT,() => {
   console.log(`Server running at http:localhost:${PORT}`)
-))
+})
